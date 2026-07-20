@@ -1,0 +1,21 @@
+<Window x:Class="OrithenApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OrithenApp POC" Height="720" Width="1100">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Horizontal" Margin="10" Spacing="8">
+      <Button Content="Ejercicios" Click="OpenExercises" />
+      <Button Content="Crear plantilla" Click="OpenCreateTemplate" />
+      <Button Content="Visualizar" Click="OpenTemplateView" />
+    </StackPanel>
+
+    <Border Grid.Row="1" Margin="10" BorderBrush="#DDD" BorderThickness="1" Padding="10">
+      <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" />
+    </Border>
+  </Grid>
+</Window>

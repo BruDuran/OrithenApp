@@ -1,0 +1,25 @@
+<Page x:Class="OrithenApp.Views.CreateTemplatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Crear plantilla">
+  <ScrollViewer>
+    <StackPanel Margin="10" Spacing="6">
+      <TextBlock Text="Nombre de la sesión" FontWeight="Bold" />
+      <TextBox x:Name="SessionNameBox" />
+
+      <TextBlock Text="Calentamiento" FontWeight="Bold" Margin="0,10,0,0" />
+      <TextBox x:Name="WarmupBox" />
+
+      <TextBlock Text="Bloque principal" FontWeight="Bold" Margin="0,10,0,0" />
+      <TextBox x:Name="BlockNameBox" />
+
+      <TextBlock Text="Estación 1" FontWeight="Bold" Margin="0,10,0,0" />
+      <TextBox x:Name="Station1Box" />
+
+      <TextBlock Text="Estación 2" FontWeight="Bold" Margin="0,10,0,0" />
+      <TextBox x:Name="Station2Box" />
+
+      <Button Content="Guardar plantilla" Click="SaveTemplate" Margin="0,10,0,0" />
+    </StackPanel>
+  </ScrollViewer>
+</Page>
