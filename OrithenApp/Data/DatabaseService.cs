@@ -76,40 +76,4 @@ public class DatabaseService
         command.ExecuteNonQuery();
     }
 
-    public void SeedSampleData()
-    {
-        using var connection = new SqliteConnection($"Data Source={_dbPath}");
-        connection.Open();
-
-        var existing = connection.CreateCommand();
-        existing.CommandText = "SELECT COUNT(*) FROM Exercises";
-        var count = Convert.ToInt32(existing.ExecuteScalar());
-        if (count > 0)
-        {
-            return;
-        }
-
-        var insertExercise = connection.CreateCommand();
-        insertExercise.CommandText = @"INSERT INTO Exercises (Name, Category, Material, Description) VALUES (@name, @category, @material, @description);";
-
-        insertExercise.Parameters.AddWithValue("@name", "Snatch");
-        insertExercise.Parameters.AddWithValue("@category", "Fuerza");
-        insertExercise.Parameters.AddWithValue("@material", "DB");
-        insertExercise.Parameters.AddWithValue("@description", "Ejercicio de fuerza");
-        insertExercise.ExecuteNonQuery();
-
-        insertExercise.Parameters.Clear();
-        insertExercise.Parameters.AddWithValue("@name", "Pull Up");
-        insertExercise.Parameters.AddWithValue("@category", "Fuerza");
-        insertExercise.Parameters.AddWithValue("@material", "Peso corporal");
-        insertExercise.Parameters.AddWithValue("@description", "Tracción");
-        insertExercise.ExecuteNonQuery();
-
-        insertExercise.Parameters.Clear();
-        insertExercise.Parameters.AddWithValue("@name", "Goblet Squat");
-        insertExercise.Parameters.AddWithValue("@category", "Fuerza");
-        insertExercise.Parameters.AddWithValue("@material", "KB");
-        insertExercise.Parameters.AddWithValue("@description", "Sentadilla con kettlebell");
-        insertExercise.ExecuteNonQuery();
-    }
 }
