@@ -4,7 +4,7 @@ A Windows 11 desktop WPF application in C# with a portable approach and local st
 
 ## Current status
 
-This first version implements a base POC structure with:
+This first version implements a working base POC structure with:
 
 - 3 main screens:
   - Exercise management
@@ -18,6 +18,7 @@ This first version implements a base POC structure with:
   - station exercises
 - A local SQLite database stored in a single file: `orithenapp.db`
 - Sample seed data to test the app
+- A basic `.gitignore` to exclude generated build artifacts such as `bin/` and `obj/`
 
 ## Project structure
 
@@ -28,6 +29,7 @@ This first version implements a base POC structure with:
   - `Models/` — domain models
   - `Data/DatabaseService.cs` — SQLite initialization and access
   - `Views/` — the three POC screens
+- `.gitignore` — excludes build output and temporary files from Git
 
 ## Requirements
 
@@ -37,9 +39,31 @@ This first version implements a base POC structure with:
 
 ## Local execution
 
+### Using Visual Studio
+
 1. Open `OrithenApp.sln` in Visual Studio.
 2. Restore NuGet packages.
-3. Build and run the application.
+3. Build the solution.
+4. Press F5 to run the app.
+
+### Using the command line
+
+From the repository root:
+
+```powershell
+dotnet build OrithenApp.sln -c Debug
+Start-Process .\OrithenApp\bin\Debug\net8.0-windows\OrithenApp.exe
+```
+
+## Build status
+
+The project has been verified in the current environment with:
+
+```powershell
+dotnet build OrithenApp.sln -c Debug
+```
+
+Result: build completed successfully.
 
 ## Local persistence
 
@@ -57,10 +81,10 @@ The current implementation is a functional base for validating the POC flow. The
 - save complete templates with blocks and stations,
 - and render the template more like a training board.
 
-## Current environment limitation
+## Repository hygiene
 
-In this execution environment, it was not possible to complete restore and build operations because the available .NET SDK returned:
+Generated files are excluded from Git via `.gitignore`, including:
 
-- `No .NET SDKs were found.`
-
-For that reason, the project structure is already created, but real compilation should be verified on a machine with the .NET SDK installed.
+- `OrithenApp/bin/`
+- `OrithenApp/obj/`
+- temporary Visual Studio and build artifacts
