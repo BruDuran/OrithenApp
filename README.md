@@ -1,49 +1,50 @@
 # OrithenApp POC
 
-A Windows 11 desktop WPF application in C# with local SQLite persistence and a simple three-screen flow.
+A Windows 11 desktop WPF application in C# with a portable approach and local storage via SQLite.
 
 ## Current status
 
-The current prototype includes:
+This first version implements a working base POC structure with:
 
 - 3 main screens:
   - Exercise management
   - Create template
-  - Visualize templates
+  - Template visualization
+- An initial data model for:
+  - exercises
+  - session templates
+  - blocks
+  - stations
+  - station exercises
 - A local SQLite database stored in a single file: `orithenapp.db`
-- Exercise entries grouped by category in the management view
-- A template creation form with:
-  - a template-name field
-  - single-select fields for Programa and Metodologia
-  - multi-select checkboxes for Escalfament
-  - dynamic blocks with exercise checkboxes
-- A template viewer that loads saved templates from the database and shows the details of the selected one
+- Sample seed data to test the app
+- A basic `.gitignore` to exclude generated build artifacts such as `bin/` and `obj/`
 
 ## Project structure
 
-- `OrithenApp.sln` — solution entry point
+- `OrithenApp.sln` — main solution
 - `OrithenApp/` — WPF project
   - `App.xaml` / `App.xaml.cs` — application startup
   - `MainWindow.xaml` / `MainWindow.xaml.cs` — navigation between screens
-  - `Models/` — domain models for exercises and templates
-  - `Data/DatabaseService.cs` — SQLite initialization and connection helpers
-  - `Views/` — the three app screens
+  - `Models/` — domain models
+  - `Data/DatabaseService.cs` — SQLite initialization and access
+  - `Views/` — the three POC screens
 - `.gitignore` — excludes build output and temporary files from Git
 
 ## Requirements
 
 - Windows 11
 - A .NET SDK compatible with WPF (recommended .NET 8 SDK for Windows)
-- Visual Studio 2022 or a similar IDE able to open a WPF solution
+- Visual Studio 2022 or a similar environment to open the project
 
-## Run locally
+## Local execution
 
 ### Using Visual Studio
 
 1. Open `OrithenApp.sln` in Visual Studio.
 2. Restore NuGet packages.
 3. Build the solution.
-4. Press F5 to launch the app.
+4. Press F5 to run the app.
 
 ### Using the command line
 
@@ -66,20 +67,19 @@ Result: build completed successfully.
 
 ## Local persistence
 
-The app uses SQLite with a local file generated in the output folder:
+The application uses SQLite with a local file in the executable folder:
 
 - `orithenapp.db`
 
-This keeps the POC portable enough to copy the whole folder to another Windows machine.
+This allows the POC to remain portable by copying the entire folder to another Windows machine.
 
-## Current functionality
+## Development notes
 
-The app currently supports:
+The current implementation is a functional base for validating the POC flow. The next step will be to:
 
-- adding exercise entries from the management page
-- grouping stored data by category in the management view
-- creating templates that store the selected program, warmup, methodology and block exercises
-- viewing all saved templates and opening one to inspect its stored details
+- complete the CRUD for exercises,
+- save complete templates with blocks and stations,
+- and render the template more like a training board.
 
 ## Repository hygiene
 
