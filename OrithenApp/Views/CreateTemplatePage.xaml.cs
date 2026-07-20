@@ -117,24 +117,34 @@ public partial class CreateTemplatePage : Page
 
     private void SaveTemplate(object sender, RoutedEventArgs e)
     {
+        var templateName = string.IsNullOrWhiteSpace(TemplateNameBox.Text)
+            ? $"Plantilla {DateTime.Now:yyyyMMddHHmmss}"
+            : TemplateNameBox.Text.Trim();
         var programSelection = ProgramComboBox.SelectedItem?.ToString() ?? string.Empty;
         var warmupSelections = string.Join(", ", WarmupCheckBoxes.Children.OfType<CheckBox>().Where(checkBox => checkBox.IsChecked == true).Select(checkBox => checkBox.Content?.ToString()));
         var methodologySelection = MethodologyComboBox.SelectedItem?.ToString() ?? string.Empty;
-        var blocksSummary = string.Join(" | ", _blockCheckPanelList.Select((panel, index) =>
-            $"Bloc {index + 1}: {string.Join(", ", panel.Children.OfType<CheckBox>().Where(checkBox => checkBox.IsChecked == true).Select(checkBox => checkBox.Content?.ToString()))}"));
+        var blockParts = _blockCheckPanelList.Select((panel, index) =>
+            $"Bloc {index + 1}: {string.Join(", ", panel.Children.OfType<CheckBox>().Where(checkBox => checkBox.IsChecked == true).Select(checkBox => checkBox.Content?.ToString()))}").ToList();
+        var notesValue = string.Join(" | ", new[]
+        {
+            $"Programa: {programSelection}",
+            $"Metodologia: {methodologySelection}",
+            $"Escalfament: {warmupSelections}"
+        }.Concat(blockParts));
 
         using var connection = new SqliteConnection($"Data Source={_db.DbPath}");
         connection.Open();
 
         var templateCommand = connection.CreateCommand();
         templateCommand.CommandText = @"INSERT INTO SessionTemplates (Name, Category, Warmup, Notes, CreatedOn) VALUES (@name, @category, @warmup, @notes, @createdOn);";
-        templateCommand.Parameters.AddWithValue("@name", programSelection);
+        templateCommand.Parameters.AddWithValue("@name", templateName);
         templateCommand.Parameters.AddWithValue("@category", methodologySelection);
         templateCommand.Parameters.AddWithValue("@warmup", warmupSelections);
-        templateCommand.Parameters.AddWithValue("@notes", blocksSummary);
+        templateCommand.Parameters.AddWithValue("@notes", notesValue);
         templateCommand.Parameters.AddWithValue("@createdOn", DateTime.UtcNow.ToString("O"));
         templateCommand.ExecuteNonQuery();
 
         MessageBox.Show("Plantilla guardada", "OK", MessageBoxButton.OK, MessageBoxImage.Information);
+        TemplateNameBox.Clear();
     }
 }

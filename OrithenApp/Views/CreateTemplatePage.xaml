@@ -4,6 +4,9 @@
       Title="Crear plantilla">
   <ScrollViewer>
     <StackPanel Margin="10">
+      <TextBlock Text="Nom de la plantilla" FontWeight="Bold" />
+      <TextBox x:Name="TemplateNameBox" Margin="0,0,0,8" />
+
       <TextBlock Text="Programa" FontWeight="Bold" />
       <ComboBox x:Name="ProgramComboBox" Margin="0,0,0,8" />
 

@@ -2,14 +2,35 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       Title="Visualización">
-  <ScrollViewer>
-    <StackPanel Margin="10">
-      <TextBlock Text="EMPENTES" FontSize="24" FontWeight="Bold" />
-      <TextBlock Text="FUERZA" FontSize="18" FontWeight="Bold" Margin="0,10,0,0" />
-      <TextBlock Text="[1] DB" Margin="0,8,0,0" />
-      <TextBlock Text="- Snatch" Margin="8,0,0,0" />
-      <TextBlock Text="- T2B" Margin="8,0,0,0" />
-      <TextBlock Text="- Chest Press" Margin="8,0,0,0" />
-    </StackPanel>
-  </ScrollViewer>
+  <Grid Margin="8">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="320" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Border Margin="0,0,12,0" Padding="12" Background="#FFFFFF" BorderBrush="#D7E2F2" BorderThickness="1" CornerRadius="10">
+      <DockPanel>
+        <TextBlock Text="Plantilles" FontSize="18" FontWeight="SemiBold" DockPanel.Dock="Top" Margin="0,0,0,8" />
+        <ListBox x:Name="TemplatesList" SelectionChanged="TemplatesList_SelectionChanged">
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding DisplayName}" FontWeight="SemiBold" />
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </DockPanel>
+    </Border>
+
+    <Border Grid.Column="1" Padding="12" Background="#FFFFFF" BorderBrush="#D7E2F2" BorderThickness="1" CornerRadius="10">
+      <ScrollViewer>
+        <StackPanel>
+          <TextBlock x:Name="SelectedTemplateTitle" Text="Selecciona una plantilla" FontSize="20" FontWeight="SemiBold" />
+          <TextBlock x:Name="ProgramText" Margin="0,12,0,4" TextWrapping="Wrap" />
+          <TextBlock x:Name="WarmupText" Margin="0,6,0,4" TextWrapping="Wrap" />
+          <TextBlock x:Name="MethodologyText" Margin="0,6,0,4" TextWrapping="Wrap" />
+          <StackPanel x:Name="BlocksContainer" Margin="0,10,0,0" />
+        </StackPanel>
+      </ScrollViewer>
+    </Border>
+  </Grid>
 </Page>
