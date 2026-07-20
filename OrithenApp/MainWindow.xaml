@@ -8,9 +8,9 @@
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
-    <StackPanel Orientation="Horizontal" Margin="10" Spacing="8">
-      <Button Content="Ejercicios" Click="OpenExercises" />
-      <Button Content="Crear plantilla" Click="OpenCreateTemplate" />
+    <StackPanel Orientation="Horizontal" Margin="10">
+      <Button Content="Ejercicios" Click="OpenExercises" Margin="0,0,8,0" />
+      <Button Content="Crear plantilla" Click="OpenCreateTemplate" Margin="0,0,8,0" />
       <Button Content="Visualizar" Click="OpenTemplateView" />
     </StackPanel>
 
