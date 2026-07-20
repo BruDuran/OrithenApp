@@ -11,9 +11,9 @@
 
     <Border Background="#FFFFFF" BorderBrush="#D7E2F2" BorderThickness="0,0,0,1" Padding="12">
       <StackPanel Orientation="Horizontal">
-        <Button Content="Introducir datos o modificar datos" Click="OpenExercises" Margin="0,0,8,0" />
-        <Button Content="Crear plantilla" Click="OpenCreateTemplate" Margin="0,0,8,0" />
-        <Button Content="Visualizar" Click="OpenTemplateView" />
+        <Button Content="Visualizar" Click="OpenTemplateView" Margin="0,0,8,0" />
+        <Button Content="Crear" Click="OpenCreateTemplate" Margin="0,0,8,0" />
+        <Button Content="Dades" Click="OpenExercises" Margin="0,0,8,0" />
       </StackPanel>
     </Border>
 

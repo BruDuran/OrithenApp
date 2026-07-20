@@ -4,21 +4,18 @@
       Title="Crear plantilla">
   <ScrollViewer>
     <StackPanel Margin="10">
-      <TextBlock Text="Nombre de la sesión" FontWeight="Bold" />
-      <TextBox x:Name="SessionNameBox" Margin="0,0,0,8" />
+      <TextBlock Text="Programa" FontWeight="Bold" />
+      <ComboBox x:Name="ProgramComboBox" Margin="0,0,0,8" />
 
-      <TextBlock Text="Calentamiento" FontWeight="Bold" Margin="0,10,0,0" />
-      <TextBox x:Name="WarmupBox" Margin="0,0,0,8" />
+      <TextBlock Text="Escalfament" FontWeight="Bold" Margin="0,10,0,0" />
+      <StackPanel x:Name="WarmupCheckBoxes" Margin="0,0,0,8" />
 
-      <TextBlock Text="Bloque principal" FontWeight="Bold" Margin="0,10,0,0" />
-      <TextBox x:Name="BlockNameBox" Margin="0,0,0,8" />
+      <TextBlock Text="Metodologia" FontWeight="Bold" Margin="0,10,0,0" />
+      <ComboBox x:Name="MethodologyComboBox" Margin="0,0,0,8" />
 
-      <TextBlock Text="Estación 1" FontWeight="Bold" Margin="0,10,0,0" />
-      <TextBox x:Name="Station1Box" Margin="0,0,0,8" />
+      <StackPanel x:Name="BlocksPanel" Margin="0,8,0,0" />
 
-      <TextBlock Text="Estación 2" FontWeight="Bold" Margin="0,10,0,0" />
-      <TextBox x:Name="Station2Box" Margin="0,0,0,8" />
-
+      <Button Content="+" Click="AddBlock" Width="30" Height="30" Margin="0,0,0,8" />
       <Button Content="Guardar plantilla" Click="SaveTemplate" Margin="0,10,0,0" />
     </StackPanel>
   </ScrollViewer>
