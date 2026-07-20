@@ -1,0 +1,29 @@
+## Build outputs
+bin/
+obj/
+out/
+
+## Visual Studio / .NET
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+*.tmp
+*.pdb
+*.ilk
+*.db
+*.db-shm
+*.db-wal
+
+## OS generated files
+.DS_Store
+Thumbs.db
+
+## NuGet packages
+packages/
+*.nupkg
+
+## ReSharper / Rider
+.idea/
+*.sln.docstates
